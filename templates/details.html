@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index.css')}}"
+    />
+  </head>
+  <body>
+    <section class="info-section">
+      <div class="info-container">
+        <div class="discover-cover-img">
+          <img
+            src="https://image.tmdb.org/t/p/w500/{{movie_info.backdrop_path}}"
+            alt="movie-poster"
+          />
+        </div>
+        <div class="discover-movie">
+          <div class="discover-details">
+            <div class="discover-title">
+              <h1>
+                {% if movie_info.title is defined %} {{movie_info.title}} {%
+                else %} {{movie_info.original_name}} {% endif %}
+              </h1>
+            </div>
+            <div class="discover-overview">
+              <p>{{movie_info.overview}}</p>
+              <section class="genres-section">
+                <div class="genres">
+                  {% for genre in movie_info.genres %}
+                  <p>{{genre.name}}</p>
+                  {% endfor %}
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="discover-img">
+            <img
+              src="https://image.tmdb.org/t/p/w500/{{movie_info.backdrop_path}}"
+              alt="movie-poster"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+       
+    <section class="seasons-section">
+        <div class="all-seasons">
+            {% if movie_info.seasons is defined %} 
+            {% for season in movie_info.seasons %}
+            <div class="seasons-container">
+                <h4>{{season.name}}</h4>
+            <img src="https://image.tmdb.org/t/p/w500/{{season.poster_path}}"
+              alt="movie-poster">
+            </div>
+                <!-- {{season}} -->
+            {% endfor %}
+
+            {%else %} 
+                <div class="status">
+                    {{movie_info.status}}
+                </div>
+        {% endif %}
+        </div>
+
+           <!-- {% for season in movie_info.seasons %}
+           {{season}}
+           {% endfor %}
+
+
+           {{movie_info.seasons}}
+    </section>
+  </body>
+</html>

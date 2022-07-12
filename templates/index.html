@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <title>Movie App</title>
+</head>
+<body>
+    <header class="discover">
+        <div class="discover-section-container">
+        {% for movie in  discover_data%}
+            <div class="discover-container ">
+                    <div class="discover-cover-img">
+                        <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}"    alt="movie-poster">
+                    </div>
+                    <div class="discover-movie">
+                        <div class="discover-details">
+                            <div class="discover-title">
+                                <h1>
+                                    {{movie.title}}
+                                </h1>
+                            </div>
+                            <div class="discover-overview">
+                                <p>{{movie.overview}}</p>
+                            </div>
+
+                        </div>
+                    <div class="discover-img">
+                        <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}"    alt="movie-poster">
+                    </div>
+                    </div>
+                     <div class="fade-bottom"></div>
+            </div>
+            {% endfor %}
+        </div>
+       
+        </div>
+        
+    </header>
+    
+    <!-- TRENDING SECTION -->
+
+    <section class="trending-section movie-section">
+          <h1>Trending Now</h1>
+        <div class="all_movies">
+            {% for movie in  trending_data %}
+                   <a href="{{url_for('details', type='movie',id=movie.id)}}">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"    alt="movie-poster" class="movie-poster">
+                        </div>
+                    </a>
+            {% endfor %}
+        </div>
+    </section>
+
+        <!-- POPULAR MOVIES -->
+        <section class="trending-section movie-section">
+          <h1>Popular Shows</h1>
+        <div class="all_movies">
+            {% for movie in  tv_shows %}
+                <a href="{{url_for('details', type='tv',id=movie.id)}}">
+                    <div class="movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}"    alt="movie-poster" class="movie-poster" id="bacdrop">
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+</html>
