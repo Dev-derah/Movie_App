@@ -39,11 +39,28 @@
         </div>
         
     </header>
+    <!-- <section>
+        <div class="search">
+        <form action="">
+            <input type="text" placeholder="Search">
+        </form>
+    </div>
+    </section> -->
+     
     
     <!-- TRENDING SECTION -->
 
     <section class="trending-section movie-section">
-          <h1>Trending Now</h1>
+        <div class="trending_header">
+             <h1>Trending Now</h1>
+            <div class="search">
+                <form action="">
+                    <input type="text" placeholder="Search">
+                </form>
+            </div>
+           
+        </div>
+          
         <div class="all_movies">
             {% for movie in  trending_data %}
                    <a href="{{url_for('details', type='movie',id=movie.id)}}">

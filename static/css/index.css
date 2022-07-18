@@ -103,9 +103,26 @@ body{
 }
 
 
+/* SEARCH */
+.search{
+    justify-content: flex-end;
+    display: flex;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+.search form input{
+    padding: 0.3rem;
+    border-radius: 2rem;
+}
 
-
+.search form input:focus{
+    border: none;
+}
 /* trending section */
+.trending_header{
+    display: flex;
+    justify-content: space-between;
+}
 .movie-section{
     padding: 0.5rem 1rem;
 }

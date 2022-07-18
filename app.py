@@ -42,12 +42,14 @@ def details(type,id):
     ssl._create_default_https_context = ssl._create_unverified_context
     conn =request.urlopen(base_url+"/"+type+"/"+id+"?api_key="+api_key+"&language=en-US")
     conn2 =request.urlopen(base_url+"/"+type+"/"+id+"/"+"similar"+"?api_key="+api_key+"&language=en-US")
+    conn3 =request.urlopen(base_url+"/"+type+"/"+id+"/"+"reviews"+"?api_key="+api_key+"&language=en-US")
 
     json_data =json.loads(conn.read())
     similar_movies =json.loads(conn2.read())
+    reviews =json.loads(conn3.read())
 
     
-    return render_template("details.html",movie_info =json_data, similar_movies=similar_movies["results"][0:5])
+    return render_template("details.html",movie_info =json_data, similar_movies=similar_movies["results"][0:5],reviews=reviews["results"])
 
 if __name__=='__main__':
     app.run(debug=True)
