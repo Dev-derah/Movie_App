@@ -17,9 +17,9 @@ base_url ="https://api.themoviedb.org/3/"
 def discover_movies():
 
     endpoints ={
-        "discover":"discover/movie/?api_key="+api_key,
-        "trending":"trending/movie/day?api_key="+api_key,
-        "tv":"tv/popular?api_key="+api_key
+        "discover":"discover/movie/?api_key="+api_key+"&language=en-US",
+        "trending":"trending/movie/day?api_key="+api_key+"&language=en-US",
+        "tv":"tv/popular?api_key="+api_key+"&language=en-US",
     }
 
     ssl._create_default_https_context = ssl._create_unverified_context
@@ -40,8 +40,9 @@ def discover_movies():
 @app.route("/<type>/<id>")
 def details(type,id):
     ssl._create_default_https_context = ssl._create_unverified_context
-    conn =request.urlopen(base_url+"/"+type+"/"+id+"?api_key="+api_key)
-    conn2 =request.urlopen(base_url+"/"+type+"/"+id+"/"+"similar"+"?api_key="+api_key)
+    conn =request.urlopen(base_url+"/"+type+"/"+id+"?api_key="+api_key+"&language=en-US")
+    conn2 =request.urlopen(base_url+"/"+type+"/"+id+"/"+"similar"+"?api_key="+api_key+"&language=en-US")
+
     json_data =json.loads(conn.read())
     similar_movies =json.loads(conn2.read())
 
@@ -49,4 +50,4 @@ def details(type,id):
     return render_template("details.html",movie_info =json_data, similar_movies=similar_movies["results"][0:5])
 
 if __name__=='__main__':
-    app.run(debug=True,host ="192.168.0.124")
+    app.run(debug=True)

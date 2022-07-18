@@ -23,8 +23,9 @@
           <div class="discover-details">
             <div class="discover-title">
               <h1>
-                {% if movie_info.title is defined %} {{movie_info.title}} {%
-                else %} {{movie_info.original_name}} {% endif %}
+                {% if movie_info.title is defined %} {{movie_info.title}} 
+                
+                {% else %} {{movie_info.original_name}} {% endif %}
               </h1>
             </div>
             <div class="discover-overview">
@@ -48,31 +49,61 @@
       </div>
     </section>
        
+
+  <!-- ALL SEASONS SECTION -->
     <section class="seasons-section">
+        {% if movie_info.seasons is defined %} 
         <div class="all-seasons">
-            {% if movie_info.seasons is defined %} 
-            {% for season in movie_info.seasons %}
-            <div class="seasons-container">
+          {% for season in movie_info.seasons %}
+              {% if season.poster_path is defined and season.poster_path != None %} 
+              <div class="season">
                 <h4>{{season.name}}</h4>
-            <img src="https://image.tmdb.org/t/p/w500/{{season.poster_path}}"
-              alt="movie-poster">
-            </div>
+                 <img src="https://image.tmdb.org/t/p/w500/{{season.poster_path}}"
+                alt="movie-poster"/>
+              </div>
+              
+              {% else %}
+                <div class="alternative_container">
+                  <h4>{{season.name}}</h4>
+                      <div class="alternaive_img">
+                  <p>
+                    {% if movie_info.title is defined %} {{movie_info.title}} {%
+                else %} {{movie_info.original_name}} {% endif %}
+                  </p>
+                 </div>
+                </div>
+             
+              {% endif %}
+              
                 <!-- {{season}} -->
             {% endfor %}
-
+          </div>
             {%else %} 
                 <div class="status">
                     {{movie_info.status}}
                 </div>
-        {% endif %}
+          {% endif %}
+    </section>
+
+
+    <!-- SIMILAR MOVIES SECTION -->
+    <section class="sm-section">
+      <h1>Similar to {% if movie_info.title is defined %} {{movie_info.title}} 
+        {% else %} {{movie_info.original_name}} {% endif %}
+      </h1>
+      <div class="simiar-movies">
+        {% for similar_movie in similar_movies %}
+        <div class="sm-movie-cntainer">
+        {% if  similar_movie.poster_path != None %}
+          <div class="sm-poster">
+          <img src="https://image.tmdb.org/t/p/w500/{{similar_movie.poster_path}}">
+          {% else %}
+          <div style="display: none;"></div>
+          {% endif %}
         </div>
-
-           <!-- {% for season in movie_info.seasons %}
-           {{season}}
-           {% endfor %}
-
-
-           {{movie_info.seasons}}
+        {% endfor %}
+        </div>
+      </div>
     </section>
   </body>
 </html>

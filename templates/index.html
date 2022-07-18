@@ -61,9 +61,15 @@
         <div class="all_movies">
             {% for movie in  tv_shows %}
                 <a href="{{url_for('details', type='tv',id=movie.id)}}">
-                    <div class="movie-card">
-                        <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}"    alt="movie-poster" class="movie-poster" id="bacdrop">
-                    </div>
+                    {% if movie.backdrop_path is defined and movie.backdrop_path != None %} 
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}"    alt="movie-poster" class="movie-poster" id="bacdrop">
+                        </div> 
+
+                    {% else %}
+                            <div class="movie-card" style="display: none;">
+                    {% endif %}
+
                 </a>
             {% endfor %}
         </div>
