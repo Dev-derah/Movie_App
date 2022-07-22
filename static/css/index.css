@@ -109,14 +109,47 @@ body{
     display: flex;
     padding: 0 2rem;
     margin-bottom: 1rem;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    z-index: 3;
 }
 .search form input{
     padding: 0.3rem;
     border-radius: 2rem;
+    height: 2rem;
+    width: 20rem;
 }
 
 .search form input:focus{
     border: none;
+    outline: none;
+    outline-offset: 0;
+}
+
+.search-results{
+    margin-top: 0.1rem;
+}
+
+.search-results ul{
+    z-index: 2;
+    list-style: none;
+    width: 20rem;
+    cursor: pointer;
+    overflow: scroll;
+    height: 13rem;
+}
+
+.search-results ul a{
+    text-decoration: none;
+}
+
+.result{
+    background-color: white;
+    border-bottom: 1px solid grey;
+    padding: 0.5rem;
+    color: #001f43;
+    font-weight: bold;
 }
 /* trending section */
 .trending_header{
@@ -136,6 +169,7 @@ body{
     overflow-x: scroll;
     overflow-y: hidden;
     transition: trasnsform all 40s ease;
+    z-index: 1;
 }
 .all_movies::-webkit-scrollbar{
     display: none;
@@ -209,6 +243,12 @@ body{
 
 .review {
     display: none;
+}
+
+.back-btn{
+    position: fixed;
+    bottom: 0;
+    padding: 2rem;
 }
 
 

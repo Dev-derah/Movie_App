@@ -39,13 +39,8 @@
         </div>
         
     </header>
-    <!-- <section>
-        <div class="search">
-        <form action="">
-            <input type="text" placeholder="Search">
-        </form>
-    </div>
-    </section> -->
+
+    <!-- SEARCH -->
      
     
     <!-- TRENDING SECTION -->
@@ -54,9 +49,27 @@
         <div class="trending_header">
              <h1>Trending Now</h1>
             <div class="search">
-                <form action="">
-                    <input type="text" placeholder="Search">
+                <form action="/result" method ="post">
+                    <input type="text" placeholder="Search" name="search" autocomplete="off">
                 </form>
+                <div class="search-results">
+                    <ul>
+                        {% for data in search_data %}
+                        {% if data.original_title is defined %}
+                        <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
+                            <li class="result">{{data.original_title}}</li>
+                        </a>
+                        {% elif data.name is defined %}
+                        <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
+                            <li class="result">{{data.name}}</li>
+                        </a>
+                        
+                        {% else %}
+                        <li class="result" style="display: none;"></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
            
         </div>
