@@ -40,28 +40,7 @@
         
     </header>
 
-    <!-- SEARCH -->
-             <div class="search-results">
-                    <ul>
-                        {% for data in search_data %}
-                        {% if data.original_title is defined %}
-                        <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
-                            <li class="result">
-                                <img src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}">
-                                {{data.original_title}}
-                            </li>
-                        </a>
-                        {% elif data.name is defined %}
-                        <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
-                            <li class="result">{{data.name}}</li>
-                        </a>
-                        
-                        {% else %}
-                        <li class="result" style="display: none;"></li>
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
+
      
     
     <!-- TRENDING SECTION -->
@@ -104,6 +83,80 @@
                     {% endif %}
 
                 </a>
+            {% endfor %}
+        </div>
+    </section>
+
+        <!-- ACTION SECTION -->
+
+    <section class="trending-section movie-section">
+        <div class="trending_header">
+             <h1>Action</h1>
+        </div>
+          
+        <div class="all_movies">
+            {% for movie in  action_data %}
+                   <a href="{{url_for('details', type='movie',id=movie.id)}}">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"    alt="movie-poster" class="movie-poster">
+                        </div>
+                    </a>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <!-- comedy SECTION -->
+
+    <section class="trending-section movie-section">
+        <div class="trending_header">
+             <h1>Comedy</h1>
+        </div>
+          
+        <div class="all_movies">
+            {% for movie in  comedy_data %}
+                   <a href="{{url_for('details', type='movie',id=movie.id)}}">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"    alt="movie-poster" class="movie-poster">
+                        </div>
+                    </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    
+    <!-- Crime SECTION -->
+
+    <section class="trending-section movie-section">
+        <div class="trending_header">
+             <h1>Crime</h1>
+        </div>
+          
+        <div class="all_movies">
+            {% for movie in  crime_data %}
+                   <a href="{{url_for('details', type='movie',id=movie.id)}}">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"    alt="movie-poster" class="movie-poster">
+                        </div>
+                    </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Horror SECTION -->
+
+    <section class="trending-section movie-section">
+        <div class="trending_header">
+             <h1>Horror</h1>
+        </div>
+          
+        <div class="all_movies">
+            {% for movie in  horror_data %}
+                   <a href="{{url_for('details', type='movie',id=movie.id)}}">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"    alt="movie-poster" class="movie-poster">
+                        </div>
+                    </a>
             {% endfor %}
         </div>
     </section>
