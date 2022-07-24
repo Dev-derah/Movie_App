@@ -85,21 +85,44 @@
             {% endfor %}
           </div>
             {%else %} 
-                <div class="status">
-                    {{movie_info.status}}
+                <div class="status" style="display: none;">
                 </div>
           {% endif %}
     </section>
 
 
+
+
+    <!-- REVIEWS SECTION -->
     <section>
       <div class="review-container">
         <h2>Reviews</h2>
-        {{reviews}}
+        {% if reviews|length != 0 %}
+        {% for review in reviews %}
+        <div class="full-review">
+              <div class="review-top">
+          <div class="author_name">
+            {% set seq=['https://www.gravatar.com/avatar/6e7edad7bbe0c599dfce11e289c2c82e.jpg','https://www.gravatar.com/avatar/992eef352126a53d7e141bf9e8707576.jpg','https://www.gravatar.com/avatar/6ZpVUJzqXMzH35VprEtnX0sNI3.jpg'] %}
+            <img src="{{seq |random}}" alt="profile-picture" srcset="">
+            <h3>{{review.author}}</h3>
+          </div>
+
+          <div class="date-created">
+            {% set x=review.created_at %}
+            {{x[:10]}}
+          </div>
+        </div>
+        <div class="review-bottom">
+          <p class="review-content">{{review.content}}</p>
+        </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No reviews yet</p>
+        {% endif %}
+        
       </div>
     </section>
-
-
     <!-- SIMILAR MOVIES SECTION -->
     <section class="sm-section">
       <h1>Similar to {% if movie_info.title is defined %} {{movie_info.title}} 

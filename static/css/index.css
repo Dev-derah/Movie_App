@@ -206,6 +206,7 @@ z-index: 5;
     display: none;
 }
 
+/* details */
 .genres{
     display: flex;
 }
@@ -226,7 +227,7 @@ z-index: 5;
 
 .all-seasons{
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -260,6 +261,42 @@ z-index: 5;
 
 .review {
     display: none;
+}
+
+.review-container{
+    padding: 5% 10%;
+}
+
+.full-review{
+    margin: 2rem 0;
+    background-color: #00459930;
+    padding: 2rem;
+    box-shadow: 5px 10px rgba(0, 0, 0, 0.084);
+}
+.author_name{
+    display: flex;
+    align-items: center;
+}
+.author_name img{
+    height: 4rem;
+}
+
+.author_name h3{
+    margin-left: 1rem;
+}
+.review-top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    align-items: center;
+}
+
+.review-content{
+    line-height: 1.5rem;
+}
+
+.author_name img{
+    border-radius: 50%;
 }
 
 .back-btn{

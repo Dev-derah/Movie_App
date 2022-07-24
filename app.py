@@ -16,6 +16,7 @@ api_key="4c4819ad3a46f0c079a2ea4d467b1cb6"
 base_url ="https://api.themoviedb.org/3/"
 
 
+
 endpoints ={
         "discover":"discover/movie/?api_key="+api_key+"&language=en-US",
         "trending":"trending/movie/day?api_key="+api_key+"&language=en-US",
@@ -23,7 +24,8 @@ endpoints ={
         "action":"discover/movie?api_key="+api_key+"&with_genres=28",
         "comedy":"discover/movie?api_key="+api_key+"&with_genres=35",
         "crime":"discover/movie?api_key="+api_key+"&with_genres=80",
-        "horror":"discover/movie?api_key="+api_key+"&with_genres=27"
+        "horror":"discover/movie?api_key="+api_key+"&with_genres=27",
+        "mystery":"discover/movie?api_key="+api_key+"&with_genres=9648"
 }
     
 
@@ -73,7 +75,6 @@ def details(type,id):
     similar_movies =json.loads(conn2.read())
     reviews =json.loads(conn3.read())
 
-    
     return render_template("details.html",movie_info =json_data, similar_movies=similar_movies["results"][0:5],reviews=reviews["results"])
 
 if __name__=='__main__':
