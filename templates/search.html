@@ -20,34 +20,35 @@
         <!-- SEARCH -->
              <div class="search-results">
                     <ul>
-                        {% for data in search_data %}
-                        {% if data.original_title is defined %}
-                        <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
-                            <li class="result">
-                                <img src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}" class="result-img">
-                                <div class="result-details">
-                                    <h2>{{data.original_title}}</h2>
-                                    <p>{{data.overview}}</p>
-                                </div>
+                    {% for data in search_data %}
+                        {% if data.original_title is defined and data.media_type != "person" %}
+                            <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
+                                <li class="result">
+                                    <img src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}" class="result-img">
+                                    <div class="result-details">
+                                        <h2>{{data.original_title}}</h2> <span> {{data.media_type}}</span>
+                                        <p>{{data.overview}}</p>
+                                    </div>
                                 
-                            </li>
-                        </a>
-                        {% elif data.name is defined %}
-                        <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
-                            <li class="result">
-                                 <img src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}" class="result-img">
-                                 <div class="result-details">
-                                    <h2>{{data.name}}</h2>
-                                    <p>{{data.overview}}</p>
-                                </div>
-                                
-                            </li>
-                        </a>
-                        
+                                    
+                                </li>
+                            </a>
+                        {% elif data.name is defined and data.media_type != "person" %}
+                                <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
+                                    <li class="result">
+                                        <img src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}" class="result-img">
+                                        <div class="result-details">
+                                            <h2>{{data.name}}</h2>
+                                            <p>{{data.overview}}</p>
+                                        </div>
+                                        
+                                    </li>
+                                </a>
+                            
                         {% else %}
-                        <li class="result" style="display: none;"></li>
+                             <li class="result" style="display: none;"></li>
                         {% endif %}
-                        {% endfor %}
+                    {% endfor %}
                     </ul>
                 </div>
 </body>

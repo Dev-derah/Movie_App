@@ -1,4 +1,4 @@
-from distutils.log import debug
+
 from email.mime import base
 from multiprocessing import connection
 from operator import index
@@ -75,7 +75,7 @@ def details(type,id):
     similar_movies =json.loads(conn2.read())
     reviews =json.loads(conn3.read())
 
-    return render_template("details.html",movie_info =json_data, similar_movies=similar_movies["results"][0:5],reviews=reviews["results"])
+    return render_template("details.html",movie_info =json_data, similar_movies=similar_movies["results"][0:6],reviews=reviews["results"])
 
 if __name__=='__main__':
     app.run(debug=True)
