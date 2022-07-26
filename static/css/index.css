@@ -163,7 +163,8 @@ z-index: 5;
     margin-bottom: 0.7rem;
 }
 .result-details p{
-    line-height: 1.5rem;;
+    line-height: 1.5rem;
+    text-align: justify;
 }
 .result-img{
     height: 15rem;
@@ -188,6 +189,7 @@ z-index: 5;
     transition: trasnsform all 40s ease;
     z-index: 1;
 }
+
 .all_movies::-webkit-scrollbar{
     display: none;
 }
@@ -289,6 +291,19 @@ z-index: 5;
         .seasons-section img{
         height: 12rem;
     }
+
+        .search {
+            position: static;
+            padding: 0;
+        }
+}
+
+
+.trending_header {
+    flex-direction: column-reverse;
+}
+.search form input {
+    width: 100%;
 }
 
 @media screen and (max-width:350px) {
@@ -300,7 +315,7 @@ z-index: 5;
     }
 
     .discover-title h1{
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
    .seasons-section img{
