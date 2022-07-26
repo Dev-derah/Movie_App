@@ -160,6 +160,41 @@
             {% endfor %}
         </div>
     </section>
+
+
+    <!-- MYSTRERY SECTION -->
+    <section class="trending-section movie-section">
+        <div class="trending_header">
+             <h1>Mystery</h1>
+        </div>
+          
+        <div class="all_movies">
+            {% for movie in  mystery_data %}
+                   <a href="{{url_for('details', type='movie',id=movie.id)}}">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"    alt="movie-poster" class="movie-poster">
+                        </div>
+                    </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- ROMANCE SECTION -->
+    <section class="trending-section movie-section">
+        <div class="trending_header">
+             <h1>Romance</h1>
+        </div>
+          
+        <div class="all_movies">
+            {% for movie in  romance_data %}
+                   <a href="{{url_for('details', type='movie',id=movie.id)}}">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"    alt="movie-poster" class="movie-poster">
+                        </div>
+                    </a>
+            {% endfor %}
+        </div>
+    </section>
 </body>
 <script src="{{url_for('static', filename='js/index.js')}}"></script>
 </html>

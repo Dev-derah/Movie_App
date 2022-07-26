@@ -21,7 +21,7 @@
              <div class="search-results">
                     <ul>
                     {% for data in search_data %}
-                        {% if data.original_title is defined and data.media_type != "person" %}
+                        {% if data.original_title is defined and data.media_type != "person" and data.poster_path != None %}
                             <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
                                 <li class="result">
                                     <img src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}" class="result-img">
@@ -33,7 +33,7 @@
                                     
                                 </li>
                             </a>
-                        {% elif data.name is defined and data.media_type != "person" %}
+                        {% elif data.name is defined and data.media_type != "person"  and data.poster_path !=  None %}
                                 <a href="{{url_for('details', type=data.media_type,id=data.id)}}">
                                     <li class="result">
                                         <img src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}" class="result-img">
