@@ -25,7 +25,8 @@ endpoints ={
         "comedy":"discover/movie?api_key="+api_key+"&with_genres=35",
         "crime":"discover/movie?api_key="+api_key+"&with_genres=80",
         "horror":"discover/movie?api_key="+api_key+"&with_genres=27",
-        "mystery":"discover/movie?api_key="+api_key+"&with_genres=9648"
+        "mystery":"discover/movie?api_key="+api_key+"&with_genres=9648",
+        "romance":"discover/movie?api_key="+api_key+"&with_genres=10749"
 }
     
 
@@ -38,6 +39,8 @@ conn4 =request.urlopen(base_url+endpoints["action"])
 conn5 =request.urlopen(base_url+endpoints["comedy"])
 conn6 =request.urlopen(base_url+endpoints["crime"])
 conn7 =request.urlopen(base_url+endpoints["horror"])
+conn8 =request.urlopen(base_url+endpoints["mystery"])
+conn9 =request.urlopen(base_url+endpoints["romance"])
 
 
     #data
@@ -48,11 +51,13 @@ action_data =json.loads(conn4.read())
 comedy_data = json.loads(conn5.read())
 crime_data = json.loads(conn6.read())
 horror_data = json.loads(conn7.read())
+mystery_data = json.loads(conn8.read())
+romance_data = json.loads(conn9.read())
 
 @app.route("/")
 def discover_movies(methods=["POST","GET"]):
     # search_data=json.loads(conn4.read())
-    return render_template("index.html", discover_data =json_data['results'][0:5],trending_data =trending_data['results'], tv_shows= tv_shows_data["results"],action_data=action_data["results"],comedy_data=comedy_data["results"],crime_data=crime_data["results"],horror_data=horror_data["results"])
+    return render_template("index.html", discover_data =json_data['results'][0:5],trending_data =trending_data['results'], tv_shows= tv_shows_data["results"],action_data=action_data["results"],comedy_data=comedy_data["results"],crime_data=crime_data["results"],horror_data=horror_data["results"], mystery_data=mystery_data["results"],romance_data=romance_data["results"])
 
 @app.route('/result', methods=["POST","GET"])
 def result():

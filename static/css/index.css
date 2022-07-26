@@ -10,6 +10,12 @@ body{
     background-size: cover;
 }
 
+/* body::-webkit-scrollbar{
+    background-color: #0045990a;
+} */
+
+
+
 .discover-section-container,.info-section{
         position: relative;
         height: 60vh;
