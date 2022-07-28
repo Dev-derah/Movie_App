@@ -65,7 +65,10 @@ def result():
     query =output["search"]
     conn4 =request.urlopen(base_url+"search/multi?api_key="+api_key+"&language=en-US&query="+query)
     search_data=json.loads(conn4.read())
-    return render_template('search.html',search_data=search_data['results'],query=query)
+    if len(search_data["results"])==0:
+        return render_template('404.html',query=query)
+    else:
+            return render_template('search.html',search_data=search_data['results'],query=query)
 
     
 

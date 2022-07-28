@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 ERROR</title>
+       <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index.css')}}"
+    />
+</head>
+<body class="error-body ">
+    <div class="error-container">
+        <h1>NO RESULTS FOR "{{query}}"</h1>
+        <a href="{{url_for('discover_movies')}}">
+            <button>Go back home</button>
+        </a>
+        
+    </div>
+    
+</body>
+</html>
