@@ -313,7 +313,17 @@ z-index: 5;
     padding: 2rem;
 }
 
-
+@media screen and (max-width:768px){
+    .discover-overview {
+            display: none;
+        }
+    .discover-movie{
+        flex-direction: column-reverse;
+        text-align: center;
+        width: 100%;
+        padding: 10%;
+    }
+}
 @media screen and (max-width:480px){
     .discover-movie{
         flex-direction: column-reverse;
@@ -347,6 +357,21 @@ z-index: 5;
 }
 .search form input {
     width: 100%;
+}
+
+/* 404 page */
+
+.error-body{
+    height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.error-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width:350px) {
