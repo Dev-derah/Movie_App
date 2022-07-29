@@ -62,11 +62,12 @@ def discover_movies(methods=["POST","GET"]):
 @app.route('/result', methods=["POST","GET"])
 def result():
     output=form_request.form.to_dict()
-    query =output["search"]
+    search =output["search"]
+    query = search.replace(" ","-")
     conn4 =request.urlopen(base_url+"search/multi?api_key="+api_key+"&language=en-US&query="+query)
     search_data=json.loads(conn4.read())
     if len(search_data["results"])==0:
-        return render_template('404.html',query=query)
+        return render_template('404.html',query=search)
     else:
             return render_template('search.html',search_data=search_data['results'],query=query)
 
@@ -86,4 +87,4 @@ def details(type,id):
     return render_template("details.html",movie_info =json_data, similar_movies=similar_movies["results"][0:6],reviews=reviews["results"])
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(debug=True,host="192.168.0.153")
