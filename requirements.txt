@@ -6,6 +6,7 @@ diskcache==5.6.3
 distro==1.8.0
 glean-parser==6.1.1
 glean-sdk==50.1.4
+gunicorn==19.7.1
 Jinja2==3.1.2
 MarkupSafe==2.0.1
 mercurial==6.5.2
