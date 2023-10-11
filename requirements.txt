@@ -4,6 +4,7 @@ click==8.1.7
 colorama==0.4.6
 diskcache==5.6.3
 distro==1.8.0
+Flask==2.1.0
 glean-parser==6.1.1
 glean-sdk==50.1.4
 gunicorn==19.7.1
